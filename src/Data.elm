@@ -1,4 +1,4 @@
-module Data exposing (BreakPoint(..), ChecklistItem, Model, Msg(..), Route(..))
+module Data exposing (BreakPoint(..), ChecklistItem, Issue, Model, Msg(..), Route(..))
 
 import Browser
 import Browser.Navigation as Nav
@@ -16,6 +16,13 @@ type alias Model =
     , title : String
     , adjust : Adjust
     , checklist : List ChecklistItem
+    , issues : List Issue
+    }
+
+
+type alias Issue =
+    { checklistId : Int
+    , comment : Maybe String
     }
 
 
@@ -23,7 +30,11 @@ type alias ChecklistItem =
     { section : String
     , title : String
     , description : String
-    , img : Maybe String
+    , maybeImg :
+        Maybe
+            { src : String
+            , description : String
+            }
     , completed : Bool
     , id : Int
     }
@@ -56,4 +67,5 @@ type Msg
     | UrlChanged Url.Url
     | DimensionChange Int Int
     | AdjustF Int Float
+    | HandleItem Int (Maybe Issue)
     | NoOp

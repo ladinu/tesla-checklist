@@ -11,7 +11,7 @@ toStr : Route -> String
 toStr r =
     case r of
         Home ->
-            ""
+            "/"
 
         Checklist ->
             "checklist"

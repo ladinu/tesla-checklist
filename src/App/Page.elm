@@ -11,7 +11,9 @@ import Element.Font as Font
 import Element.Input as Input
 import Element.Region exposing (description)
 import Html exposing (Html)
+import Html.Attributes exposing (title)
 import Palette exposing (gray9)
+import Routes
 import Scale exposing (..)
 import Utils exposing (bpw)
 
@@ -260,28 +262,34 @@ sliderNums m =
 begin : Model -> Element Msg
 begin m =
     let
-        ( completed, remaining ) =
+        ( completed, notCompleted ) =
             App.Logic.checklistProgress m
 
+        total =
+            completed + notCompleted
+
         buttonText =
-            if completed >= 1 then
+            if completed == 0 then
+                "Begin"
+
+            else if completed < total then
                 "Continue"
 
             else
-                "Begin"
+                "Export"
     in
     column [ width fill, height fill ]
         [ column [ Element.centerX, Element.centerY, spacing s3 ]
-            [ row [] [ text (String.fromInt completed ++ "/" ++ String.fromInt remaining ++ " completed") ]
+            [ row [] [ text (String.fromInt completed ++ "/" ++ String.fromInt total ++ " completed") ]
             , Element.link
                 [ Element.centerX
                 , padding s1
                 , Background.color (hlColor 2)
                 , height (px s8)
-                , width (px s10)
+                , width (px s12)
                 , Border.rounded s1
                 ]
-                { url = "/checklist"
+                { url = Routes.toStr Checklist
                 , label = el [ Element.centerX ] (text buttonText)
                 }
             ]
@@ -290,17 +298,100 @@ begin m =
 
 checklistV : Model -> Element Msg
 checklistV m =
+    let
+        cp =
+            s1
+    in
     case App.Logic.getNextChecklistItem m of
-        Just { title, section, img, description } ->
-            column [ explain Debug.todo, width fill, height fill ]
-                [ row [] [ text section ]
-                , row [] [ text title ]
-                , row [] [ text description ]
-                , row [] []
+        Just { title, section, maybeImg, description, id } ->
+            column
+                [ width fill
+                , height fill
+                ]
+                [ row [ width fill, height (fillPortion 1) ] []
+                , row [ width fill, height (fillPortion 8) ]
+                    [ column [ height fill, width (fillPortion 1) ] []
+                    , column
+                        [ height fill
+                        , width (fillPortion 8)
+                        , Background.color (rgba255 255 255 255 255)
+                        , Border.rounded s1
+                        ]
+                        [ paragraph
+                            [ padding cp
+                            , height (fillPortion 2)
+                            , width fill
+                            ]
+                            [ text title ]
+                        , case maybeImg of
+                            Just img ->
+                                image
+                                    [ width fill
+                                    , height (fillPortion 3)
+                                    , padding cp
+                                    ]
+                                    img
+
+                            Nothing ->
+                                none
+                        , paragraph
+                            [ padding cp
+                            , height (fillPortion 3)
+                            , width fill
+                            ]
+                            [ text description ]
+                        , row
+                            [ height (fillPortion 2)
+                            , width fill
+                            , spacing s3
+                            , padding s3
+                            ]
+                            [ column
+                                [ width (fillPortion 1)
+                                , height fill
+                                ]
+                                [ row
+                                    [ Background.color (hlColor 1)
+                                    , width fill
+                                    , height fill
+                                    , Element.Events.onClick (HandleItem id (Just { checklistId = id, comment = Nothing }))
+                                    ]
+                                    [ el
+                                        [ centerY
+                                        , centerX
+                                        ]
+                                        (text "X")
+                                    ]
+                                ]
+                            , column
+                                [ width (fillPortion 1)
+                                , height fill
+                                ]
+                                [ row
+                                    [ Background.color (hlColor 1)
+                                    , width fill
+                                    , height fill
+                                    , Element.Events.onClick (HandleItem id Nothing)
+                                    ]
+                                    [ el
+                                        [ centerY
+                                        , centerX
+                                        ]
+                                        (text "✓")
+                                    ]
+                                ]
+                            ]
+                        ]
+                    , column [ height fill, width (fillPortion 1) ] []
+                    ]
+                , row [ width fill, height (fillPortion 1) ] []
                 ]
 
         Nothing ->
-            text ""
+            link []
+                { url = Routes.toStr Home
+                , label = text "Done!"
+                }
 
 
 tst : Model -> Element Msg
@@ -328,7 +419,6 @@ tst m =
                 ]
                 (if App.Logic.onHome m then
                     [ begin m ]
-                    -- [ checklistV m ]
 
                  else if App.Logic.onChecklist m then
                     [ checklistV m ]

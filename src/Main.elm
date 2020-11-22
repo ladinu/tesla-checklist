@@ -2,6 +2,7 @@ module Main exposing (main)
 
 import App
 import App.Home exposing (home)
+import App.Logic
 import App.Page exposing (page)
 import Browser
 import Browser.Events
@@ -33,6 +34,9 @@ update msg m =
 
         DimensionChange w h ->
             ( { m | width = w, height = h, bp = toBp w }, Cmd.none )
+
+        HandleItem id maybeIssue ->
+            ( App.Logic.handleItem m id maybeIssue, Cmd.none )
 
         AdjustF f v ->
             let

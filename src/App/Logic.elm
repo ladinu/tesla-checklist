@@ -44,3 +44,28 @@ getNextChecklistItem m =
     List.partition .completed m.checklist
         |> Tuple.second
         |> List.head
+
+
+handleItem : Model -> Int -> Maybe Issue -> Model
+handleItem m id maybeIssue =
+    let
+        newList =
+            m.checklist
+                |> List.map
+                    (\i ->
+                        if i.id == id then
+                            { i | completed = True }
+
+                        else
+                            i
+                    )
+
+        newm =
+            { m | checklist = newList }
+    in
+    case maybeIssue of
+        Just ok ->
+            newm
+
+        Nothing ->
+            newm

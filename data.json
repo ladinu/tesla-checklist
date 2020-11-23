@@ -1,0 +1,322 @@
+[
+   {
+      "title": "Name & Address",
+      "desc": "Check for the correct full name and address on your paperwork."
+   },
+   {
+      "title": "VIN",
+      "desc": "Confirm the vehicle's VIN matches your paperwork."
+   },
+   {
+      "title": "Monroney sticker",
+      "desc": "Verify that the vehicle's Monroney record matches your configuration.",
+      "img": "https://i.imgur.com/2PIPISh.jpeg"
+   },
+   {
+      "title": "Head light fit",
+      "desc": "Check the head light fit"
+   },
+   {
+      "title": "Intake vent paint",
+      "desc": "Inspect the paint around intake vents on the front bumper"
+   },
+   {
+      "title": "Frunk paint",
+      "desc": "Inspect the frunk, look for paint defects, dents and signs of improper closing by the sides of the T logo"
+   },
+   {
+      "title": "Hood",
+      "desc": "Make sure the hood sits flush with the quarter panels and frunk"
+   },
+   {
+      "title": "Windshield fit",
+      "desc": "Inspect that the windshield isn't installed shifted (the gaps between the glass and A pillar on either side should be approximately equal). An improperly installed windshield causes significant wind noise at highway speeds."
+   },
+   {
+      "title": "Pannel gaps",
+      "desc": "Check for uneven/wide panel gaps and that panels are flush to car"
+   },
+   {
+      "title": "Trim",
+      "desc": "Check for trim stains"
+   },
+   {
+      "title": "Door leavers",
+      "desc": "Check all 4 door levers"
+   },
+   {
+      "title": "Pillars",
+      "desc": "Check for dings on pillars"
+   },
+   {
+      "title": "Paint",
+      "desc": "Inspect the paint on the outside and the door jams, ensure panel corners do not have chips"
+   },
+   {
+      "title": "Tail lights",
+      "desc": "Check the tail light fit",
+      "img": "https://i.imgur.com/aPzCKKG"
+   },
+   {
+      "title": "Lights",
+      "desc": "Check all front and rear exterior lights for signs of internal condensation."
+   },
+   {
+      "title": "Charging port",
+      "desc": "Check charging port fit (driver side)"
+   },
+   {
+      "title": "Wheels",
+      "desc": "Check all wheels, make sure they aren’t scratched"
+   },
+   {
+      "title": "Hubcaps",
+      "desc": "Confirm all 4 hubcaps are present and properly attached"
+   },
+   {
+      "title": "Wheel well",
+      "desc": "Inspect all wheel wells. Each wheel well is fitted with noise dampener covers that are attached to the body with a combination of plastic pins (pushed in all the way) and metal threaded pins (sticking out) with plastic nuts. Confirm that all plastic pins are present (there are no empty holes) and all metal pins (2 in each front wheel well, 4 in each rear wheel well) are present and properly attached.",
+      "img": "https://i.imgur.com/6KqcVg4"
+   },
+   {
+      "title": "Rocker panels",
+      "desc": "Check for damage to black rocker panels"
+   },
+   {
+      "title": "Undercarriage",
+      "desc": "Inspect the undercarriage, look for damage, missing screws, or screws that are sticking out",
+      "img": "https://i.imgur.com/TozVn9I"
+   },
+   {
+      "title": "Lights",
+      "desc": "Turn on the lights on the car including: ambient light, fog lights, head lights, tail lights, reverse light, brake, signal lights (head light signal and side signal lights)"
+   },
+   {
+      "title": "Wipers",
+      "desc": "Check that wipers function correctly and look for potential wiper dings on hood"
+   },
+   {
+      "title": "Glass",
+      "desc": "Inspect every glass and make sure there are no distortion, scratches or cracks"
+   },
+   {
+      "title": "Trim scratches",
+      "desc": "Check for trim scratches on windows due to a software bug that doesn't automatically lower the window when opening the door"
+   },
+   {
+      "title": "Charge port",
+      "desc": "Verify that the charge port opens and closes"
+   },
+   {
+      "title": "Rubber gasket",
+      "desc": "Verify that the rubber gasket is properly attached to the bottom of all 4 doors.",
+      "img": "https://i.imgur.com/AodUDfg"
+   },
+   {
+      "title": "Doors",
+      "desc": "Test all doors to ensure they open and close without unreasonable effort or sound. Check paint in areas such as door hinges, that are not visible when doors are closed. NOTE: Some deliveries have reported incomplete body painting in hidden areas."
+   },
+   {
+      "title": "Screen",
+      "desc": "Inspect the screen for scratches"
+   },
+   {
+      "title": "Error messages",
+      "desc": "Check for any error messages on the display screen."
+   },
+   {
+      "title": "Phantom touches",
+      "desc": "Touch the \"Tesla T\" at the top of the screen to bring up the \"About Your Tesla\" window. Tap the unicorn drawing to access the Sketch Pad. Leave the Sketch Pad up for a minute to make sure there are no phantom touches happening on the display."
+   },
+   {
+      "title": "Steering wheel",
+      "desc": "Inspect the steering wheel, check front & back for scratches or tears"
+   },
+   {
+      "title": "Steering position",
+      "desc": "Test the steering wheel position controls to ensure proper operation."
+   },
+   {
+      "title": "Horn",
+      "desc": "Press the center of the steering wheel to make sure the vehicle's horn works."
+   },
+   {
+      "title": "Center console",
+      "desc": "Inspect the center console scratches, dings, etc."
+   },
+   {
+      "title": "Dash",
+      "desc": "Inspect the dash for scratches"
+   },
+   {
+      "title": "Sun-visor",
+      "desc": "Check sun-visor operation and mirror condition"
+   },
+   {
+      "title": "Rearview mirror",
+      "desc": "Check the rearview mirror for any warping or distortion."
+   },
+   {
+      "title": "Rearview mirror",
+      "desc": "Check the rearview mirror for any warping or distortion."
+   },
+   {
+      "title": "Wireless charging",
+      "desc": "Verify that wireless charging works on both sides"
+   },
+   {
+      "title": "Wired charging",
+      "desc": "Confirm wired charging works (1 x USB-A in front, 3 x USB-C, front and back)"
+   },
+   {
+      "title": "Glovebox",
+      "desc": "Open and close the glovebox"
+   },
+   {
+      "title": "Windows",
+      "desc": "Open and close windows using one click open close and manually open and close (make sure there are no noises and they stay up when you close, and when they go down they do all the way down for front two windows. The rear two windows don't go down all the way."
+   },
+   {
+      "title": "Windows",
+      "desc": "Ensure door windows auto-close completely when doors are closed."
+   },
+   {
+      "title": "Cameras",
+      "desc": "Verify backup camera"
+   },
+   {
+      "title": "Speakers",
+      "desc": "Play a familiar track through the sound system and confirm that all speakers work (use the balance and fader controls) and there are no unexpected clicks, etc."
+   },
+   {
+      "title": "Vehicle information",
+      "desc": "Check the vehicle's display screen for any information that does not match the vehicle (found by tapping the Tesla \"T\")."
+   },
+   {
+      "title": "Mirrors",
+      "desc": "Fold mirrors"
+   },
+   {
+      "title": "Interior lights",
+      "desc": "Check all interior lights, and that all reading lights turn on with a press"
+   },
+   {
+      "title": "Windshield",
+      "desc": "Check for proper windshield and windshield trim installation."
+   },
+   {
+      "title": "Roof glass",
+      "desc": "Inspect all edges of the roof glass panel and rear window."
+   },
+   {
+      "title": "Headliner",
+      "desc": "Inspect the headliner all around (no grease, damage or scuffs)"
+   },
+   {
+      "title": "Coat hooks",
+      "desc": "Inspect both coat hooks (should extend, retract and latch)"
+   },
+   {
+      "title": "Stalks",
+      "desc": "Check that turn signal and drive selection stalks work and actuate smoothly"
+   },
+   {
+      "title": "Door sill",
+      "desc": "Look for scratches on the passenger side door sill"
+   },
+   {
+      "title": "Seat belts",
+      "desc": "Check all seat belts for proper operation."
+   },
+   {
+      "title": "Seats",
+      "desc": "Check all seats for scuffs/damage/bad seams"
+   },
+   {
+      "title": "Back seat",
+      "desc": "Try to lift the bottom of the back seat to ensure it is securely attached to its base."
+   },
+   {
+      "title": "Front Seats",
+      "desc": "Verify all front seat adjustments, including lumbar support"
+   },
+   {
+      "title": "Seat heaters",
+      "desc": "Confirm seat heaters work"
+   },
+   {
+      "title": "Middle seat",
+      "desc": "Confirm the middle seat on back row is flush at both ends"
+   },
+   {
+      "title": "Back seats",
+      "desc": "Confirm that back seats recline adjustment works correctly"
+   },
+   {
+      "title": "Floor mats",
+      "desc": "Inspect the floor mats for rips, stains, etc."
+   },
+   {
+      "title": "Accelerator",
+      "desc": "Inspect the metal accelerator and brake pedal arms; there have been reports of different finish on pedals (matte on accelerator, glossy on brake) and a conspicuous weld in the middle of the brake pedal",
+      "img": "https://i.redd.it/tejna92u6j351.jpg"
+   },
+   {
+      "title": "Climate control",
+      "desc": "Turn on climate control, force the heat pump to kick in by taking the temperature to either end of the scale and listen for loud noises"
+   },
+   {
+      "title": "Frunk",
+      "desc": "Test opening and closing of the frunk. Check paint in areas that are not visible when frunk and trunk are closed. NOTE: Some deliveries have reported incomplete body painting in hidden areas."
+   },
+   {
+      "title": "Frunk clips",
+      "desc": "Verify the clips holding the trim area around the frunk"
+   },
+   {
+      "title": "Tow hook",
+      "desc": "Confirm the tow hook isn't missing"
+   },
+   {
+      "title": "Lift gate",
+      "desc": "Open & close the lift gate; sometimes the gasket gets caught in the molding, causing a click"
+   },
+   {
+      "title": "Lift gate",
+      "desc": "Confirm the lift gate opens and closes without \"shuddering\" and that the button on the hatch works to close it"
+   },
+   {
+      "title": "Cargo covers",
+      "desc": "Inspect the cargo covers and verify they're properly attached"
+   },
+   {
+      "title": "Trunk buttons",
+      "desc": "Confirm both button in trun fold the back seats"
+   },
+   {
+      "title": "Folding seats",
+      "desc": "Confirm folding rear seats do not catch on the rear trunk floor carpeting"
+   },
+   {
+      "title": "Back seat",
+      "desc": "Inspect the back seat covers and verify they're properly attached"
+   },
+   {
+      "title": "Chargin cable",
+      "desc": "Confirm the charging cable and the J1772 adapter aren't missing",
+      "img": "https://i.imgur.com/1B3gKH5.jpeg"
+   },
+   {
+      "title": "License plate bracket",
+      "desc": "Check for front license plate bracket (if applicable in your state)."
+   },
+   {
+      "title": "Tow hitch",
+      "desc": "Check for the tow harness (if tow hitch was ordered).",
+      "img": "https://i.imgur.com/uQ4E4yE.jpg"
+   },
+   {
+      "title": "Charge car",
+      "desc": "Confirm (car battery) charging works"
+   }
+]

@@ -55,6 +55,12 @@ update msg m =
             in
             ( { m | adjust = adjusted m.adjust }, Cmd.none )
 
+        ChecklistLoaded (Err e) ->
+            ( { m | checklist = [], checkliststate = UnableToLoad }, Cmd.none )
+
+        ChecklistLoaded (Ok list) ->
+            ( { m | checklist = list, checkliststate = GotChecklist }, Cmd.none )
+
         NoOp ->
             ( m, Cmd.none )
 

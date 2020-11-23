@@ -296,14 +296,92 @@ begin m =
         ]
 
 
-checklistV : Model -> Element Msg
-checklistV m =
+card : Model -> ChecklistItem -> Element Msg
+card m item =
     let
+        { title, maybeImg, description, id } =
+            item
+
         cp =
             s1
     in
+    column
+        [ height fill
+        , width (fillPortion 8)
+        , Background.color (rgba255 255 255 255 255)
+        , Border.rounded s1
+        ]
+        [ paragraph
+            [ padding cp
+            , height (fillPortion 2)
+            , width fill
+            ]
+            [ text title ]
+        , case maybeImg of
+            Just img ->
+                image
+                    [ width fill
+                    , height (fillPortion 3)
+                    , padding cp
+                    ]
+                    img
+
+            Nothing ->
+                none
+        , paragraph
+            [ padding cp
+            , height (fillPortion 8)
+            , width fill
+            ]
+            [ text description ]
+        , row
+            [ height (fillPortion 2)
+            , width fill
+            , spacing s3
+            , padding s3
+            ]
+            [ column
+                [ width (fillPortion 1)
+                , height fill
+                ]
+                [ row
+                    [ Background.color (hlColor 1)
+                    , width fill
+                    , height fill
+                    , Element.Events.onClick (HandleItem id (Just { checklistId = id, comment = Nothing }))
+                    ]
+                    [ el
+                        [ centerY
+                        , centerX
+                        ]
+                        (text "X")
+                    ]
+                ]
+            , column
+                [ width (fillPortion 1)
+                , height fill
+                ]
+                [ row
+                    [ Background.color (hlColor 1)
+                    , width fill
+                    , height fill
+                    , Element.Events.onClick (HandleItem id Nothing)
+                    ]
+                    [ el
+                        [ centerY
+                        , centerX
+                        ]
+                        (text "✓")
+                    ]
+                ]
+            ]
+        ]
+
+
+checklistV : Model -> Element Msg
+checklistV m =
     case App.Logic.getNextChecklistItem m of
-        Just { title, section, maybeImg, description, id } ->
+        Just item ->
             column
                 [ width fill
                 , height fill
@@ -311,77 +389,7 @@ checklistV m =
                 [ row [ width fill, height (fillPortion 1) ] []
                 , row [ width fill, height (fillPortion 8) ]
                     [ column [ height fill, width (fillPortion 1) ] []
-                    , column
-                        [ height fill
-                        , width (fillPortion 8)
-                        , Background.color (rgba255 255 255 255 255)
-                        , Border.rounded s1
-                        ]
-                        [ paragraph
-                            [ padding cp
-                            , height (fillPortion 2)
-                            , width fill
-                            ]
-                            [ text title ]
-                        , case maybeImg of
-                            Just img ->
-                                image
-                                    [ width fill
-                                    , height (fillPortion 3)
-                                    , padding cp
-                                    ]
-                                    img
-
-                            Nothing ->
-                                none
-                        , paragraph
-                            [ padding cp
-                            , height (fillPortion 3)
-                            , width fill
-                            ]
-                            [ text description ]
-                        , row
-                            [ height (fillPortion 2)
-                            , width fill
-                            , spacing s3
-                            , padding s3
-                            ]
-                            [ column
-                                [ width (fillPortion 1)
-                                , height fill
-                                ]
-                                [ row
-                                    [ Background.color (hlColor 1)
-                                    , width fill
-                                    , height fill
-                                    , Element.Events.onClick (HandleItem id (Just { checklistId = id, comment = Nothing }))
-                                    ]
-                                    [ el
-                                        [ centerY
-                                        , centerX
-                                        ]
-                                        (text "X")
-                                    ]
-                                ]
-                            , column
-                                [ width (fillPortion 1)
-                                , height fill
-                                ]
-                                [ row
-                                    [ Background.color (hlColor 1)
-                                    , width fill
-                                    , height fill
-                                    , Element.Events.onClick (HandleItem id Nothing)
-                                    ]
-                                    [ el
-                                        [ centerY
-                                        , centerX
-                                        ]
-                                        (text "✓")
-                                    ]
-                                ]
-                            ]
-                        ]
+                    , card m item
                     , column [ height fill, width (fillPortion 1) ] []
                     ]
                 , row [ width fill, height (fillPortion 1) ] []
@@ -417,7 +425,13 @@ tst m =
                 [ width fill
                 , height fill
                 ]
-                (if App.Logic.onHome m then
+                (if App.Logic.checklistLoading m then
+                    [ text "Loading checklist..." ]
+
+                 else if App.Logic.checklistError m then
+                    [ text "Couldn't load checklist. Refresh to try again" ]
+
+                 else if App.Logic.onHome m then
                     [ begin m ]
 
                  else if App.Logic.onChecklist m then

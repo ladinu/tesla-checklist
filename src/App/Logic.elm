@@ -65,34 +65,48 @@ checklistProgress m =
 
 getNextChecklistItem : Model -> Maybe ChecklistItem
 getNextChecklistItem m =
-    List.partition .completed m.checklist
-        |> Tuple.second
-        |> List.head
+    if m.cursor < List.length m.checklist then
+        List.filter (\a -> a.id == m.cursor) m.checklist |> List.head
+
+    else
+        Nothing
+
+
+
+-- List.filter (\a -> a.id == m.id)
+-- List.partition .completed m.checklist
+--     |> Tuple.second
+--     |> List.head
+
+
+goto : Int -> Model -> Model
+goto c m =
+    { m | cursor = c }
 
 
 handleItem : Model -> Int -> Maybe Issue -> Model
 handleItem m id maybeIssue =
     let
+        isIssue =
+            case maybeIssue of
+                Just _ ->
+                    False
+
+                Nothing ->
+                    True
+
         newList =
             m.checklist
                 |> List.map
                     (\i ->
                         if i.id == id then
-                            { i | completed = True }
+                            { i | completed = True, ok = isIssue }
 
                         else
                             i
                     )
-
-        newm =
-            { m | checklist = newList }
     in
-    case maybeIssue of
-        Just ok ->
-            newm
-
-        Nothing ->
-            newm
+    { m | checklist = newList, cursor = m.cursor + 1 }
 
 
 loadChecklistCmd : Cmd Msg
@@ -117,6 +131,7 @@ checklistDecoder =
             { title = tmp.title
             , description = tmp.desc
             , maybeImg = Maybe.map (\src -> { src = src, description = "" }) tmp.img
+            , ok = False
             , completed = False
             , id = i
             }

@@ -13,7 +13,7 @@ import Element.Region exposing (description)
 import Html exposing (Html)
 import Html.Attributes exposing (title)
 import Palette exposing (gray9)
-import Routes
+import Routes exposing (toStr)
 import Scale exposing (..)
 import Utils exposing (bpw)
 
@@ -277,9 +277,35 @@ begin m =
 
             else
                 "Export"
+
+        item i =
+            let
+                color =
+                    if i.completed then
+                        if i.ok then
+                            rgba255 123 239 178 1
+
+                        else
+                            rgba255 240 52 52 1
+
+                    else
+                        rgba255 149 165 166 1
+            in
+            row
+                [ Element.centerX
+                , width fill
+                , Background.color color
+                , padding s2
+                , onClick (GoTo i.id)
+                ]
+                [ text i.title
+                ]
+
+        items =
+            m.checklist |> List.map item
     in
-    column [ width fill, height fill ]
-        [ column [ Element.centerX, Element.centerY, spacing s3 ]
+    column [ width fill, height fill, spacing s3 ]
+        [ row [ Element.centerX, Element.centerY, spacing s3 ]
             [ row [] [ text (String.fromInt completed ++ "/" ++ String.fromInt total ++ " completed") ]
             , Element.link
                 [ Element.centerX
@@ -292,6 +318,9 @@ begin m =
                 { url = Routes.toStr Checklist
                 , label = el [ Element.centerX ] (text buttonText)
                 }
+            ]
+        , row [ width fill ]
+            [ column [ Element.centerX, spacing s3 ] items
             ]
         ]
 
@@ -386,9 +415,22 @@ checklistV m =
                 [ width fill
                 , height fill
                 ]
-                [ row [ width fill, height (fillPortion 1) ] []
+                [ row [ width fill, height (fillPortion 1) ]
+                    [ Element.link
+                        [ Element.centerX
+                        , padding s1
+                        , Background.color (hlColor 2)
+                        , height (px s8)
+                        , width (px s12)
+                        , Border.rounded s1
+                        ]
+                        { url = Routes.toStr Home
+                        , label = el [ Element.centerX ] (text "Back")
+                        }
+                    ]
                 , row [ width fill, height (fillPortion 8) ]
-                    [ column [ height fill, width (fillPortion 1) ] []
+                    [ column [ height fill, width (fillPortion 1) ]
+                        []
                     , card m item
                     , column [ height fill, width (fillPortion 1) ] []
                     ]

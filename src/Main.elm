@@ -6,6 +6,7 @@ import App.Logic
 import App.Page exposing (page)
 import Browser
 import Browser.Events
+import Browser.Navigation
 import Data exposing (..)
 import Routes
 import Utils exposing (toBp)
@@ -37,6 +38,9 @@ update msg m =
 
         HandleItem id maybeIssue ->
             ( App.Logic.handleItem m id maybeIssue, Cmd.none )
+
+        GoTo c ->
+            ( App.Logic.goto c m, Browser.Navigation.pushUrl m.key (Routes.toStr Checklist) )
 
         AdjustF f v ->
             let

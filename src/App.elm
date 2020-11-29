@@ -26,6 +26,7 @@ model width height route url key =
     , checklist = checklist
     , checkliststate = Getting
     , issues = []
+    , cursor = 0
     }
 
 

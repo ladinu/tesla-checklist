@@ -19,6 +19,7 @@ type alias Model =
     , checkliststate : ChecklistState
     , checklist : List ChecklistItem
     , issues : List Issue
+    , cursor : Int
     }
 
 
@@ -42,6 +43,7 @@ type alias ChecklistItem =
             { src : String
             , description : String
             }
+    , ok : Bool
     , completed : Bool
     , id : Int
     }
@@ -76,4 +78,5 @@ type Msg
     | AdjustF Int Float
     | ChecklistLoaded (Result Http.Error (List ChecklistItem))
     | HandleItem Int (Maybe Issue)
+    | GoTo Int
     | NoOp
